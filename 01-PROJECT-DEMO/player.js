@@ -1,21 +1,31 @@
 class Player {
   constructor() {
     this.element = document.createElement("div");
-    this.gameArea = document.querySelector("#game-area");
+    // this.gameArea = document.querySelector("#game-area");
     this.element.setAttribute("id", "player");
-    this.gameArea.appendChild(this.element);
+    myGame.element.appendChild(this.element);
+    // this.gameAreaWidth = this.gameArea.getBoundingClientRect().width;
 
     this.positionBottom = 0;
     this.positionLeft = 0;
-    this.velocity = 5;
+    this.velocity = 10;
     this.direction = null;
+    this.width = this.element.getBoundingClientRect().width;
   }
 
   move(direction) {
     if (direction === "left") {
       this.positionLeft -= this.velocity;
+
+      if (this.positionLeft <= 0) {
+        this.positionLeft = 0;
+      }
     } else if (direction === "right") {
       this.positionLeft += this.velocity;
+
+      if (this.positionLeft >= myGame.width - this.width) {
+        this.positionLeft = myGame.width - this.width;
+      }
     }
     this.element.style.left = this.positionLeft + "px";
   }
