@@ -31,7 +31,7 @@ function gameLoop() {
   Bullet.bulletsArray.forEach((bullet) => {
     bullet.move();
   });
-
+  enemyArea.move();
   player.move(player.direction);
 }
 
