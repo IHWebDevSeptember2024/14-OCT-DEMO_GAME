@@ -1,9 +1,16 @@
-console.log(player);
 document.addEventListener("keydown", (e) => {
-  if (e.key === "ArrowLeft") {
-    player.direction = "left";
-  } else if (e.key === "ArrowRight") {
-    player.direction = "right";
+  switch (e.key) {
+    case "ArrowLeft":
+      player.direction = "left";
+      break;
+    case "ArrowRight":
+      player.direction = "right";
+      break;
+    case " ":
+      new Bullet(player.positionLeft);
+      break;
+    default:
+      break;
   }
 });
 
@@ -20,6 +27,10 @@ let frames = 0;
 function gameLoop() {
   requestAnimationFrame(gameLoop);
   frames++;
+
+  Bullet.bulletsArray.forEach((bullet) => {
+    bullet.move();
+  });
 
   player.move(player.direction);
 }
