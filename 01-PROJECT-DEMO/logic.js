@@ -1,13 +1,16 @@
 document.addEventListener("keydown", (e) => {
+
   switch (e.key) {
     case "ArrowLeft":
+    case "a":
       player.direction = "left";
       break;
     case "ArrowRight":
+    case "d":
       player.direction = "right";
       break;
     case " ":
-      new Bullet(player.positionLeft);
+      new Bullet(player.positionLeft + player.width/2);
       break;
     default:
       break;
@@ -15,8 +18,20 @@ document.addEventListener("keydown", (e) => {
 });
 
 document.addEventListener("keyup", (e) => {
-  if (e.key === "ArrowLeft" || e.key === "ArrowRight") {
-    player.direction = null;
+  switch (e.key) {
+    case "ArrowLeft":
+    case "a":
+      if (player.direction === "left") {
+        player.direction = null;
+      }
+      break;
+    case "ArrowRight":
+    case "d":
+      if (player.direction === "right") {
+        player.direction = null;
+      }
+
+      break;
   }
 });
 

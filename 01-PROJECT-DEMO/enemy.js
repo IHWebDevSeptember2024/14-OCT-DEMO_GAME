@@ -22,9 +22,9 @@ class Enemy {
     // this.element.remove();
     this.element.style.position = "relative";
     this.element.style.top = -10000 + "px"
-    const enemyIndex = Enemy.bulletsArray.indexOf(this);
+    const enemyIndex = Enemy.enemiesArray.indexOf(this);
 
-    Enemy.bulletsArray.splice(enemyIndex, 1);
+    Enemy.enemiesArray.splice(enemyIndex, 1);
   }
 }
 

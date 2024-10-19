@@ -3,13 +3,15 @@ class Bullet {
   constructor(positionLeft) {
     this.element = document.createElement("div");
     this.element.classList.add("bullet");
-    this.positionLeft = positionLeft;
-    this.positionBottom = 0;
-    this.element.style.left = this.positionLeft + "px";
-    this.velocity = 10;
     myGame.element.appendChild(this.element);
     this.height = this.element.getBoundingClientRect().height;
     this.width = this.element.getBoundingClientRect().width;
+    console.log(this.width);
+
+    this.positionLeft = positionLeft - this.width/2;
+    this.positionBottom = 0;
+    this.element.style.left = this.positionLeft + "px";
+    this.velocity = 10;
     Bullet.bulletsArray.push(this);
   }
 

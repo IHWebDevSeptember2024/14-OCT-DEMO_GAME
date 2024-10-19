@@ -19,16 +19,17 @@ body {
 }
 
 #player {
-  background-color: greenyellow;
   width: 60px;
-  height: 30px;
+  height: 60px;
   position: absolute;
   bottom: 0;
   left: 0;
+  background-image: url("./spaceship.png");
+  background-size: cover;
+  z-index: 1;
 }
 
 #enemy-area {
-  border: 1px solid red;
   width: 70%;
   height: 40%;
   position: absolute;
@@ -42,15 +43,18 @@ body {
 }
 
 .bullet {
-  background-color: greenyellow;
-  width: 20px;
+  background-color: rgb(255, 242, 0);
+  width: 5px;
   height: 20px;
   position: absolute;
   bottom: 0;
 }
 
 .enemy {
-  background-color: greenyellow;
+  background-image: url("./invader.png");
+  background-size: cover;
   width: 40px;
   height: 40px;
 }
+
+
