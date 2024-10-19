@@ -31,8 +31,38 @@ function gameLoop() {
   Bullet.bulletsArray.forEach((bullet) => {
     bullet.move();
   });
+  crashTest();
+
   enemyArea.move();
   player.move(player.direction);
 }
 
 requestAnimationFrame(gameLoop);
+
+function crashTest() {
+  Enemy.enemiesArray.forEach((enemy) => {
+    const enemyLeftEdge = enemy.getPositionLeft();
+    const enemyRightEdge = enemy.getPositionLeft() + enemy.width;
+    const enemyTopEdge = enemy.getPositionBottom() - enemy.height;
+    const enemyBottomEdge = enemy.getPositionBottom();
+
+    Bullet.bulletsArray.forEach((bullet) => {
+      const bulletLeftEdge = bullet.element.getBoundingClientRect().left;
+      const bulletRightEdge =
+        bullet.element.getBoundingClientRect().left + bullet.width;
+      const bulletTopEdge =
+        bullet.element.getBoundingClientRect().bottom - bullet.height;
+      const bulletBottomEdge = bullet.element.getBoundingClientRect().bottom;
+
+      if (
+        bulletLeftEdge < enemyRightEdge &&
+        bulletRightEdge > enemyLeftEdge &&
+        bulletTopEdge < enemyBottomEdge &&
+        bulletBottomEdge > enemyTopEdge
+      ) {
+        bullet.destroy();
+        enemy.destroy();
+      }
+    });
+  });
+}

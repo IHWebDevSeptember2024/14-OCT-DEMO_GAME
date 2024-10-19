@@ -9,10 +9,8 @@ class Bullet {
     this.velocity = 10;
     myGame.element.appendChild(this.element);
     this.height = this.element.getBoundingClientRect().height;
-
+    this.width = this.element.getBoundingClientRect().width;
     Bullet.bulletsArray.push(this);
-
-    console.log(Bullet.bulletsArray);
   }
 
   move() {
@@ -27,5 +25,11 @@ class Bullet {
       const index = Bullet.bulletsArray.indexOf(this);
       Bullet.bulletsArray.splice(index, 1);
     }
+  }
+
+  destroy() {
+    const bulletIndex = Bullet.bulletsArray.indexOf(this);
+    Bullet.bulletsArray.splice(bulletIndex, 1);
+    this.element.remove();
   }
 }

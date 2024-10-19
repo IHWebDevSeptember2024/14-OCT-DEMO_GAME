@@ -5,6 +5,26 @@ class Enemy {
     this.element.classList.add("enemy");
     enemyArea.element.appendChild(this.element);
     Enemy.enemiesArray.push(this);
+    this.width = this.element.getBoundingClientRect().width;
+    this.height = this.element.getBoundingClientRect().height;
+    this.positionBottom = this.element.getBoundingClientRect().bottom;
+  }
+
+  getPositionLeft() {
+    return this.element.getBoundingClientRect().left;
+  }
+
+  getPositionBottom() {
+    return this.element.getBoundingClientRect().bottom;
+  }
+
+  destroy() {
+    // this.element.remove();
+    this.element.style.position = "relative";
+    this.element.style.top = -10000 + "px"
+    const enemyIndex = Enemy.bulletsArray.indexOf(this);
+
+    Enemy.bulletsArray.splice(enemyIndex, 1);
   }
 }
 
